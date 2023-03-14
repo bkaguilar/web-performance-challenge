@@ -1,20 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+
+  <title>The Rum Diary</title>
+
+  <style>
+      /* alegreya-regular - latin */
+    @font-face {
+      font-family: 'Alegreya';
+      font-style: normal;
+      font-weight: 400;
+      src: local(''),
+            url('../fonts/alegreya-v29-latin-regular.woff') format('woff'), /* Modern Browsers */
+            url('../fonts/alegreya-v29-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+            url('../fonts/alegreya-v29-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('../fonts/alegreya-v29-latin-regular.svg#Alegreya') format('svg'); /* Legacy iOS */
+    }
+    /* alegreya-900 - latin */
+    @font-face {
+      font-family: 'Alegreya';
+      font-style: normal;
+      font-weight: 900;
+      src: local(''),
+            url('../fonts/alegreya-v29-latin-900.woff') format('woff'), /* Modern Browsers */
+            url('../fonts/alegreya-v29-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+            url('../fonts/alegreya-v29-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+            url('../fonts/alegreya-v29-latin-900.svg#Alegreya') format('svg'); /* Legacy iOS */
+    }
+  </style>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="http://slowfil.es/file?type=css&delay=1000&sync-in-head" />
-  <link rel="stylesheet" href="styles/index.css" />
-  <link rel="preload" href="background.jpg" as="image">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <link rel="preload" href="fonts/alegreya-v29-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/alegreya-v29-latin-900.woff2" as="font" type="font/woff2" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
-  <script src="https://slowfil.es/file?type=js&delay=2000"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://unpkg.com/vuex"></script>
+  <link rel="stylesheet" type="text/css" href="styles/index.css" />
+  <link rel="stylesheet" type="text/css" href="styles/mobile.css">
+
+
   <script>
-    // Adobe Target pre-hiding code snippet 
+    // advertisment mock FIXME:
+    const initAd = () => {
+      const adSpace = document.querySelector('.main__advertising');
+      const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z"></iframe></div></div>';
+      setTimeout(() => adSpace.innerHTML = gif, 3000);
+    };
+
+    window.addEventListener('load', () => {
+      // initAd();
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script src="script/carousel.js" defer></script>
+  <script src="script/a11y.js" async></script>
+  <script src="script/app.js" async></script>
+  <!-- <script>
+    // Adobe Target pre-hiding code snippet
     ;(function(win, doc, style, timeout) {
       var STYLE_ID = 'at-body-style';
 
@@ -52,45 +95,10 @@
         removeStyle(getParent(), STYLE_ID);
       }, timeout);
     }(window, document, "body {opacity: 0 !important}", 3000));
-  </script>
-  <script>
-    // advertisment mock
-    const initAd = () => {
-      const adSpace = document.querySelector('.main__advertising');
-      const gif = '<div style="width:400px;max-width:100%;"><div style="height:0;padding-bottom:52.4%;position:relative;"><iframe width="500" height="262" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameBorder="0" src="https://imgflip.com/embed/6wy03z"></iframe></div></div>';
-      setTimeout(() => adSpace.innerHTML = gif, 3000);
-    };
-    // Slow JS
-    function wait(ms) {
-      var start = Date.now(),
-      now = start;
-      while (now - start < ms) {
-        now = Date.now();
-      }
-    };
-
-    // async CSS
-    function loadMobileCSS() {
-      $('head').append(`<link rel="stylesheet" type="text/css" href="styles/mobile.css">`);
-    };
-
-    wait(2000);
-    window.addEventListener('load', () => {
-      initAd();
-      loadMobileCSS();
-    });
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script src='http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.js'></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js"></script>
-  <title>The Rum Diary</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+  </script> -->
 </head>
 <body>
-  <div id="cookie-vue">
-    <cookie-layer class="cookieLayer__base" v-show="displayCookieBox" v-on:accept="acceptCookies()"/>
+  <div class="cookieLayer__base">
   </div>
   <header class="header__base">
     <div class="header__content">
@@ -120,46 +128,50 @@
   </header>
 
   <main class="main__base">
-    <div class="main__advertising"></div>
+    <div class="main__advertising">
+      <video width="400" height="209" muted autoplay loop preload="auto" poster="https://i.imgflip.com/2/6wy03z.jpg">
+        <source src="https://i.imgflip.com/6wy03z.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <h1 class="main__title visually-hidden" id="page-title">The Rum Diary Homepage</h1>
-    
+
     <div class="main__content" role="main">
       <div class="main__news main__section">
         <marquee width="100%" direction="left" style="line-height: 30px;background-color: darkred;color: red;"></marquee>
       </div>
-      
+
       <section class="main__hero main__section">
         <a class="hero__carousel div1 swiper" href="fake-link.html" aria-label="Local restaurants finally optimising time to first bite">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide lazy">
+            <div class="swiper-slide">
               <img 
                 src="https://images.unsplash.com/flagged/photo-1579632993381-847f6a71a3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1170&q=100" 
-                alt="Person taking a bite of food">
+                alt="Person taking a bite of food"
+                loading="lazy">
             </div>
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
           </div>
           <div class="swiper-text">Local restaurants finally optimising time to first bite</div>
         </a>
-        <script src="script/carousel.js"></script>
-        
+
         <a class="hero__teaser div2" href="fake-link.html" aria-label="Top 10 waterfalls to analyse this week">
-          <img 
-            src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif" 
-            data-src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&h=400&q=100" 
-            class="hero__img lazy" 
+          <img
+            src="https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&h=400&q=100" 
+            class="hero__img"
+            loading="lazy"
             alt="Waterfall in the woods">
           <div class="hero__teaserText">Top 10 waterfalls to analyse this week</div>
         </a>
         <a class="hero__teaser div3" href="fake-link.html" aria-label="Bouncing rates increased signifincantly last week">
           <img 
-            src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif" 
-            data-src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1180&q=80" 
-            class="hero__img lazy"
-            alt="Child jumping on a trampoline">
+            src="https://images.unsplash.com/photo-1646271912756-44f11896cfea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&fm=png&fit=crop&w=1180&q=80" 
+            class="hero__img"
+            alt="Child jumping on a trampoline"
+            loading="lazy">
           <div class="hero__teaserText">Bouncing rates increased signifincantly last week</div>
         </a>
       </section>
@@ -173,7 +185,8 @@
               <img 
                 src="https://images.unsplash.com/photo-1631857455684-a54a2f03665f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=100"
                 class="teaser__image"
-                alt="Many cakes on a table">
+                alt="Many cakes on a table"
+                loading="lazy">
               <p class="teaser__text"></p>
             </article>
           </li>
@@ -183,7 +196,8 @@
               <img 
                 src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=100"
                 class="teaser__image"
-                alt="People toasting with wine glasses">
+                alt="People toasting with wine glasses"
+                loading="lazy">
               <p class="teaser__text"></p>
             </article>
           </li>
@@ -192,22 +206,20 @@
               <h3 class="teaser__title"><a href="/mock-link-to-article.html">Third Party</a></h3>
               <img
                 src="https://images.unsplash.com/photo-1496024840928-4c417adf211d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=100" 
-                class="teaser__image" 
-                alt="People throwing color powder in a disco club">
+                class="teaser__image"
+                alt="People throwing color powder in a disco club"
+                loading="lazy">
               <p class="teaser__text"></p>
             </article>
           </li>
         </ul>
       </section>
-      
+
       <section class="main__weather main__section">
         <h2 class="visually-hidden">Weather forecast</h2>
         <a class="weatherwidget-io" href="https://forecast7.com/en/48d1411d58/munich/" data-label_1="MUNICH" data-label_2="WEATHER" data-theme="original" >MUNICH WEATHER</a>
-        <script>
-        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://blackhole.webpagetest.org/';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-        </script>
       </section>
-      
+
       <section class="main__video main__section">
         <h2 class="visually-hidden">Video and feedback form</h2>
         <iframe src="https://player.vimeo.com/video/44265326?h=1e8b36c00b&autoplay=1&loop=1&byline=0&muted=1&controls=0 " width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -226,7 +238,7 @@
       </section>
     </div>
   </main>
-  
+
   <aside class="disclaimer__base">
     <p class="disclaimer__text">
       This site is made for the purpose of web performance and accessibility testing challeng and it is full of bad practices on purpose.
@@ -243,6 +255,4 @@
       <div class="footer__sponsor">Powered by <a href="https://www.netcentric.biz/" class="footer__link">Cognizant Netcentric</a></div>
     </div>
   </footer>
-  <script src="script/app.js"></script>
-  <script src="script/a11y.js"></script>
 </body>
