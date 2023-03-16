@@ -6,6 +6,8 @@
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
   <title>The Rum Diary</title>
+
+  <link rel="preload" href="assets/bite.webp" as="image">
   <link rel="preload" href="fonts/alegreya-v29-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/architectsDaughter-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -22,7 +24,7 @@
            url('fonts/alegreya-v29-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
            url('fonts/alegreya-v29-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
     }
-    /* Architects Daughter - latin */
+    /* Architects Daughter */
     @font-face {
       font-family: 'Architects Daughter';
       font-style: normal;
@@ -45,46 +47,6 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js" async></script>
   <script src="script/carousel.js" defer></script>
   <script src="script/a11y.js" defer></script>
-  <!-- <script>
-    // Adobe Target pre-hiding code snippet
-    ;(function(win, doc, style, timeout) {
-      var STYLE_ID = 'at-body-style';
-
-      function getParent() {
-        return doc.getElementsByTagName('head')[0];
-      }
-
-      function addStyle(parent, id, def) {
-        if (!parent) {
-          return;
-        }
-
-        var style = doc.createElement('style');
-        style.id = id;
-        style.innerHTML = def;
-        parent.appendChild(style);
-      }
-
-      function removeStyle(parent, id) {
-        if (!parent) {
-          return;
-        }
-
-        var style = doc.getElementById(id);
-
-        if (!style) {
-          return;
-        }
-
-        parent.removeChild(style);
-      }
-
-      addStyle(getParent(), STYLE_ID, style);
-      setTimeout(function() {
-        removeStyle(getParent(), STYLE_ID);
-      }, timeout);
-    }(window, document, "body {opacity: 0 !important}", 3000));
-  </script> -->
 </head>
 <body>
   <div class="cookieLayer__base">
@@ -141,8 +103,7 @@
               <img
                 src="./assets/bite.webp"
                 alt="Person taking a bite of food"
-                height="400"
-                loading="lazy">
+                height="400">
             </div>
             <div class="swiper-slide"></div>
             <div class="swiper-slide"></div>
