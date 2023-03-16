@@ -4,7 +4,7 @@ const accessibleBoxes = () => {
   teasers.forEach((teaser) => {
     const link = teaser.querySelector("a");
     if (!link) { return;}
-    
+
     const url = link.getAttribute("href");
     teaser.addEventListener("click", () => {
       location.href = url;
@@ -18,12 +18,6 @@ const accessibleBoxes = () => {
     link.addEventListener("blur", () => {
       teaser.classList.remove("isfocused");
     });
-
-    teaser.insertAdjacentHTML("beforeend", '<span class="teaser__link" aria-hidden="true">Read more</span>');
   });
 }
-document.addEventListener("DOMContentLoaded", function () {
-  if ("querySelector" in document) {
-    accessibleBoxes();
-  }
-});
+document.addEventListener("DOMContentLoaded", accessibleBoxes);
