@@ -9,6 +9,7 @@
 
 /* components */
 @import url(components.css);
+@import url(swiper.css);
 
-/* components */
+/* Mobile */
 @import url(mobile.css);
